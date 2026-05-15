@@ -63,7 +63,7 @@ function(input, output, session) {
           notes_df$note_tbl <- render_update_notes(notes_rctval = notes_df$note_tbl,
                                                    id = 'ca',
                                                    mod_name = 'Cohort Attrition',
-                                                   other_inps = str_c('- ', input$ca_val, '\n- Log = ', input$ca_log),
+                                                   other_inps = stringr::str_c('- ', input$ca_val, '\n- Log = ', input$ca_log),
                                                    input = input)
 
           updateTextAreaInput(inputId = 'ca_note',
@@ -93,7 +93,7 @@ function(input, output, session) {
                                                    id = 'evp',
                                                    mod_name = 'Expected Variables Present',
                                                    other_inps = ifelse(is.null(vars), input$evp_val,
-                                                                       str_c('- ', input$evp_val, '\n- ', vars)),
+                                                                       stringr::str_c('- ', input$evp_val, '\n- ', vars)),
                                                    input = input)
 
           updateTextAreaInput(inputId = 'evp_note',
@@ -135,7 +135,7 @@ function(input, output, session) {
           notes_df$note_tbl <- render_update_notes(notes_rctval = notes_df$note_tbl,
                                                    id = 'pf',
                                                    mod_name = 'Patient Facts',
-                                                   other_inps = str_c(vl, vis, dom),
+                                                   other_inps = stringr::str_c(vl, vis, dom),
                                                    input = input)
 
           updateTextAreaInput(inputId = 'pf_note',

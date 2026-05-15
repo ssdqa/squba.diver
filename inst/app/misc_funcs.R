@@ -84,7 +84,7 @@ update_type_input <- function(dat_list,
     }
   }
 
-  updateSelectInput(inputId = str_c(ck_str, '_type'),
+  updateSelectInput(inputId = stringr::str_c(ck_str, '_type'),
                     choices = check_vec,
                     selected = check_vec[1])
 }
