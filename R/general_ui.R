@@ -5,6 +5,8 @@
 #'
 #' @returns xx
 #'
+#' @importFrom shinybusy add_busy_spinner
+#'
 genUI <- function(id){
   #ns <- NS(id)
 
