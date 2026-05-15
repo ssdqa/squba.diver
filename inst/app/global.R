@@ -17,7 +17,6 @@ NULL
 
 ##' Format input data
 source('format_squba_tbls.R')
-Sys.setenv('squba_rslt_dir__' = '../dummy_rslts')
 squba_input <- format_squba_tbls()
 
 #### Check Registry ####
