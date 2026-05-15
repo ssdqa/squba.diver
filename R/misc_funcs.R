@@ -238,10 +238,10 @@ plot_downloader <- function(plt_obj,
         for (i in seq_along(plt_obj)) {
           if(any(class(plt_obj[[i]]) %in% 'gt_tbl')){
             path <- file.path(tmp_dir, paste0(id, "_table_", i, ".rtf"))
-            gtsave(plt_obj[[i]], path)
+            gt::gtsave(plt_obj[[i]], path)
           }else{
             path <- file.path(tmp_dir, paste0(id, "_plot_", i, ".png"))
-            ggsave(path, plot = plt_obj[[i]], width = 8, height = 6)
+            ggplot2::ggsave(path, plot = plt_obj[[i]], width = 8, height = 6)
           }
           plot_files[i] <- path
         }
