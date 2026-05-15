@@ -7,7 +7,7 @@ genUI <- function(id){
       selectInput(inputId = stringr::str_c(id, '_type'),
                   label = 'Check Type',
                   choices = NULL),
-      uiOutput(str_c(id, '_selects')),
+      uiOutput(stringr::str_c(id, '_selects')),
       hr(),
       downloadButton(stringr::str_c(id, '_dwnld'),
                      label = 'Download Plots'),
