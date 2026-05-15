@@ -1,12 +1,22 @@
 
-
+#' Server backend for EVP module
+#'
+#' @param id x
+#' @param data x
+#' @param input x
+#' @param output x
+#'
+#' @returns xx
+#'
+#' @import shiny
+#'
 evp_server <- function(id, data, input, output) {
 
     #### Load check-specific data ####
     evp_dat <- reactive({
-      load_check_data(dat_list = data(),
-                      input = input,
-                      type_input = 'evp_type')
+      squba.diver::load_check_data(dat_list = data(),
+                                   input = input,
+                                   type_input = 'evp_type')
     })
 
     #### Build sidebar selectors ####
@@ -123,8 +133,8 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      plt_engine_selector(plt_rctv = evp_graph(),
-                          n_plt = 1)
+      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+                                       n_plt = 1)
 
     })
 
@@ -138,8 +148,8 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      plt_engine_selector(plt_rctv = evp_graph(),
-                          n_plt = 2)
+      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+                                       n_plt = 2)
 
     })
 
@@ -150,11 +160,11 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      plt_engine_selector(plt_rctv = evp_graph(),
-                          n_plt = 3)
+      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+                                       n_plt = 3)
 
     })
 
-    output$evp_dwnld <- plot_downloader(plt_obj = evp_graph,
-                                        id = 'evp')
+    output$evp_dwnld <- squba.diver::plot_downloader(plt_obj = evp_graph,
+                                                     id = 'evp')
 }

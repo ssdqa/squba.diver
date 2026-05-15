@@ -1,11 +1,22 @@
 
+#' Server backend for CA modules
+#'
+#' @param id x
+#' @param data x
+#' @param input x
+#' @param output x
+#'
+#' @returns xx
+#'
+#' @import shiny
+#'
 ca_server <- function(id, data, input, output) {
 
   #### Load check-specific data ####
   ca_dat <- reactive({
-    load_check_data(dat_list = data(),
-                    input = input,
-                    type_input = 'ca_type')
+    squba.diver::load_check_data(dat_list = data(),
+                                 input = input,
+                                 type_input = 'ca_type')
   })
 
   #### Build sidebar selectors ####
@@ -82,27 +93,27 @@ ca_server <- function(id, data, input, output) {
   #### Build plot 1 ####
   output$ca_plt1 <- renderUI({
 
-    plt_engine_selector(plt_rctv = ca_graph(),
-                        n_plt = 1)
+    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+                                     n_plt = 1)
 
   })
 
   #### Build plot 2 ####
   output$ca_plt2 <- renderUI({
 
-    plt_engine_selector(plt_rctv = ca_graph(),
-                        n_plt = 2)
+    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+                                     n_plt = 2)
 
   })
 
   #### Build plot 3 ####
   output$ca_plt3 <- renderUI({
 
-    plt_engine_selector(plt_rctv = ca_graph(),
-                        n_plt = 3)
+    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+                                     n_plt = 3)
 
   })
 
-  output$ca_dwnld <- plot_downloader(plt_obj = ca_graph,
-                                     id = 'ca')
+  output$ca_dwnld <- squba.diver::plot_downloader(plt_obj = ca_graph,
+                                                  id = 'ca')
 }

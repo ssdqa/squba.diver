@@ -27,7 +27,9 @@ Imports:
     shinybusy,
     shinydashboard,
     shinydashboardPlus,
-    stringr
+    stringr,
+    cli,
+    readr
 Depends: 
     squba
 Remotes:

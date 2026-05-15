@@ -1,4 +1,10 @@
 
+#' General UI setup
+#'
+#' @param id xx
+#'
+#' @returns xx
+#'
 genUI <- function(id){
   #ns <- NS(id)
 

@@ -1,11 +1,22 @@
 
+#' Server backend for PF module
+#'
+#' @param id x
+#' @param data x
+#' @param input x
+#' @param output x
+#'
+#' @returns XX
+#'
+#' @import shiny
+#'
 pf_server <- function(id, data, input, output) {
 
   #### Load check-specific data ####
   pf_dat <- reactive({
-    load_check_data(dat_list = data(),
-                    input = input,
-                    type_input = 'pf_type')
+    squba.diver::load_check_data(dat_list = data(),
+                                 input = input,
+                                 type_input = 'pf_type')
   })
 
   #### Build sidebar selectors ####
@@ -162,27 +173,27 @@ pf_server <- function(id, data, input, output) {
       req(input$pf_time)
     }
 
-    plt_engine_selector(plt_rctv = pf_graph(),
-                        n_plt = 1)
+    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+                                     n_plt = 1)
 
   })
 
   #### Build plot 2 ####
   output$pf_plt2 <- renderUI({
 
-    plt_engine_selector(plt_rctv = pf_graph(),
-                        n_plt = 2)
+    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+                                     n_plt = 2)
 
   })
 
   #### Build plot 3 ####
   output$pf_plt3 <- renderUI({
 
-    plt_engine_selector(plt_rctv = pf_graph(),
-                        n_plt = 3)
+    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+                                     n_plt = 3)
 
   })
 
-  output$pf_dwnld <- plot_downloader(plt_obj = pf_graph,
-                                     id = 'pf')
+  output$pf_dwnld <- squba.diver::plot_downloader(plt_obj = pf_graph,
+                                                  id = 'pf')
 }

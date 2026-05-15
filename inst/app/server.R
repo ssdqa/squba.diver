@@ -37,7 +37,7 @@ function(input, output, session) {
                     tab = tabPanel(title = squba_reg[[m]]$name,
                                    id = squba_reg[[m]]$id,
                                    value = squba_reg[[m]]$ref_val,
-                                   genUI(squba_reg[[m]]$id)))
+                                   squba.diver::genUI(squba_reg[[m]]$id)))
         }
       }
     })
@@ -55,12 +55,13 @@ function(input, output, session) {
     #### Load CA server mod ####
     observe({
       if(!is.null(squba_input$ca)){
-        update_type_input(dat_list = squba_input$ca,
-                          ck_str = 'ca')
-        ca_server('ca', reactive(squba_input$ca), input, output)
+        squba.diver::update_type_input(dat_list = squba_input$ca,
+                                       ck_str = 'ca')
+        squba.diver::ca_server('ca', reactive(squba_input$ca), input, output)
         observeEvent(input$ca_save_note, {
 
-          notes_df$note_tbl <- render_update_notes(notes_rctval = notes_df$note_tbl,
+          notes_df$note_tbl <-
+            squba.diver::render_update_notes(notes_rctval = notes_df$note_tbl,
                                                    id = 'ca',
                                                    mod_name = 'Cohort Attrition',
                                                    other_inps = stringr::str_c('- ', input$ca_val, '\n- Log = ', input$ca_log),
@@ -77,9 +78,9 @@ function(input, output, session) {
     #### Load EVP server mod ####
     observe({
       if(!is.null(squba_input$evp)){
-        update_type_input(dat_list = squba_input$evp,
-                          ck_str = 'evp')
-        evp_server('evp', reactive(squba_input$evp), input, output)
+        squba.diver::update_type_input(dat_list = squba_input$evp,
+                                       ck_str = 'evp')
+        squba.diver::evp_server('evp', reactive(squba_input$evp), input, output)
         observeEvent(input$evp_save_note, {
 
           if(grepl("Multi Site, Exploratory, Longitudinal", input$evp_type)){
@@ -89,7 +90,8 @@ function(input, output, session) {
             vars <- input$evp_var_s
           }else{vars <- NULL}
 
-          notes_df$note_tbl <- render_update_notes(notes_rctval = notes_df$note_tbl,
+          notes_df$note_tbl <-
+            squba.diver::render_update_notes(notes_rctval = notes_df$note_tbl,
                                                    id = 'evp',
                                                    mod_name = 'Expected Variables Present',
                                                    other_inps = ifelse(is.null(vars), input$evp_val,
@@ -107,9 +109,9 @@ function(input, output, session) {
     #### Load PF server mod ####
     observe({
       if(!is.null(squba_input$pf)){
-        update_type_input(dat_list = squba_input$pf,
-                          ck_str = 'pf')
-        pf_server('pf', reactive(squba_input$pf), input, output)
+        squba.diver::update_type_input(dat_list = squba_input$pf,
+                                       ck_str = 'pf')
+        squba.diver::pf_server('pf', reactive(squba_input$pf), input, output)
         observeEvent(input$pf_save_note, {
 
           base_type <- stringr::str_remove(input$pf_type, ' \\(.*')
@@ -132,7 +134,8 @@ function(input, output, session) {
           }else{dom <- NULL}
 
 
-          notes_df$note_tbl <- render_update_notes(notes_rctval = notes_df$note_tbl,
+          notes_df$note_tbl <-
+            squba.diver::render_update_notes(notes_rctval = notes_df$note_tbl,
                                                    id = 'pf',
                                                    mod_name = 'Patient Facts',
                                                    other_inps = stringr::str_c(vl, vis, dom),
