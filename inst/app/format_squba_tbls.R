@@ -7,6 +7,7 @@
 #'
 #' @importFrom dplyr pull
 #' @importFrom dplyr mutate
+#' @importFrom dplyr distinct
 #' @importFrom stringr str_split
 #'
 format_squba_tbls <- function(squba_rslt_directory = Sys.getenv('squba_rslt_dir__')){
@@ -28,7 +29,7 @@ format_squba_tbls <- function(squba_rslt_directory = Sys.getenv('squba_rslt_dir_
       dat <- dat %>% dplyr::mutate(time_start = as.Date(time_start))
     }
 
-    output_func <- dat %>% distinct(output_function) %>% dplyr::pull()
+    output_func <- dat %>% dplyr::distinct(output_function) %>% dplyr::pull()
 
     if(grepl('^cnc_sp', output_func)){
       output_split <- stringr::str_split(output_func, '_', n = 3)
