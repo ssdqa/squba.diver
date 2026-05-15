@@ -39,7 +39,12 @@ squba_dive <- function(squba_results_directory = '../dummy_rslts'){
       list(id = "pf", name = "Patient Facts", data = "pf", ref_val = 4)
     )
 
-    shiny::runApp(appDir = system.file('app', package = 'squba.diver'))
+    app_dir = system.file('app', package = 'squba.diver')
+
+    server <- source(file.path(app_dir, "server.R"), local = TRUE)
+    ui <- source(file.path(app_dir, "ui.R"), local = TRUE)
+
+    shiny::shinyApp(ui = ui, server = server)
   })
 
 }
