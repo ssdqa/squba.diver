@@ -15,6 +15,20 @@
 #' @import dplyr
 NULL
 
+library(shiny)
+library(shinydashboard)
+library(shinydashboardPlus)
+library(bslib)
+library(shinybusy)
+library(gt)
+library(ggiraph)
+library(ggplot2)
+library(plotly)
+library(squba)
+library(stringr)
+library(dplyr)
+library(rlang)
+
 ##' Format input data
 source('format_squba_tbls.R')
 squba_input <- format_squba_tbls()
