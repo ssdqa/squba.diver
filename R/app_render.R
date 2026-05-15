@@ -41,8 +41,8 @@ squba_dive <- function(squba_results_directory = '../dummy_rslts'){
 
     app_dir = system.file('app', package = 'squba.diver')
 
-    server <- source(file.path(app_dir, "server.R"), local = TRUE)
-    ui <- source(file.path(app_dir, "ui.R"), local = TRUE)
+    server <- source(file.path(app_dir, "server.R"), local = environment())
+    ui <- source(file.path(app_dir, "ui.R"), local = environment())
 
     shiny::shinyApp(ui = ui, server = server)
   })
