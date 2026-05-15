@@ -6,6 +6,16 @@
 #
 #    https://shiny.posit.co/
 
+##' `Load data`
+squba_input <- format_squba_tbls()
+
+#### Check Registry ####
+squba_reg <- list(
+  list(id = "ca", name = "Cohort Attrition", data = "ca", ref_val = 2),
+  list(id = "evp", name = "Expected Variables Present", data = "evp", ref_val = 3),
+  list(id = "pf", name = "Patient Facts", data = "pf", ref_val = 4)
+)
+
 ##' `Start NavBar Page`
 
 navbarPage(
