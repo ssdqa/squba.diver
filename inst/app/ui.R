@@ -6,9 +6,10 @@
 #
 #    https://shiny.posit.co/
 
+
 ##' `Start NavBar Page`
 
-navbarPage(
+ui <- navbarPage(
   title = 'SQUBA Visualizer',
   id = 'nav',
   theme = bslib::bs_theme(preset = 'lumen'),
@@ -55,3 +56,4 @@ navbarPage(
            ))
 
 )
+
