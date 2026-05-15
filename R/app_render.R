@@ -28,6 +28,24 @@ squba_dive <- function(squba_results_directory = '../dummy_rslts'){
 
   Sys.setenv('squba_rslt_dir__' = squba_results_directory)
 
-  shiny::runApp(system.file('app', package = 'squba.diver'))
+  app_env <- new.env(parent = environment())
+  app_dir <- system.file('app', package = 'squba.diver')
+
+  ##' `Load data`
+  app_env$squba_input <- squba.diver::format_squba_tbls()
+
+  #### Check Registry ####
+  app_env$squba_reg <- list(
+    list(id = "ca", name = "Cohort Attrition", data = "ca", ref_val = 2),
+    list(id = "evp", name = "Expected Variables Present", data = "evp", ref_val = 3),
+    list(id = "pf", name = "Patient Facts", data = "pf", ref_val = 4)
+  )
+
+  source(file.path(app_dir, "ui.R"), local = app_env)
+  source(file.path(app_dir, "server.R"), local = app_env)
+
+  shiny::shinyApp(ui = app_env$ui, server = app_env$server)
+
+  #shiny::runApp(system.file('app', package = 'squba.diver'))
 
 }
