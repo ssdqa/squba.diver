@@ -5,12 +5,13 @@
 #'
 #' @returns list of dataframes that will be used by the app
 #'
+#' @importFrom dplyr pull
+#' @importFrom dplyr mutate
+#' @importFrom stringr str_split
+#'
 format_squba_tbls <- function(squba_rslt_directory = Sys.getenv('squba_rslt_dir__')){
 
   squba_files <- list.files(squba_rslt_directory)
-
-  print(Sys.getenv('squba_rslt_dir__'))
-  print(squba_files)
 
   rslt_list <- list()
 
@@ -24,17 +25,17 @@ format_squba_tbls <- function(squba_rslt_directory = Sys.getenv('squba_rslt_dir_
     dat <- readr::read_csv(file.path(squba_rslt_directory, i))
 
     if(any(colnames(dat) == 'time_start')){
-      dat <- dat %>% mutate(time_start = as.Date(time_start))
+      dat <- dat %>% dplyr::mutate(time_start = as.Date(time_start))
     }
 
-    output_func <- dat %>% distinct(output_function) %>% pull()
+    output_func <- dat %>% distinct(output_function) %>% dplyr::pull()
 
     if(grepl('^cnc_sp', output_func)){
-      output_split <- str_split(output_func, '_', n = 3)
+      output_split <- stringr::str_split(output_func, '_', n = 3)
       mod_nm <- paste(output_split[[1]][1], output_split[[1]][2], sep = '_')
       check_nm <- output_split[[1]][3]
     }else{
-      output_split <- str_split(output_func, '_', n = 2)
+      output_split <- stringr::str_split(output_func, '_', n = 2)
       mod_nm <- output_split[[1]][1]
       check_nm <- output_split[[1]][2]
     }
