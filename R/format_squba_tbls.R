@@ -10,7 +10,6 @@
 #' @importFrom dplyr distinct
 #' @importFrom stringr str_split
 #'
-#' @export
 #'
 format_squba_tbls <- function(squba_rslt_directory = Sys.getenv('squba_rslt_dir__')){
 

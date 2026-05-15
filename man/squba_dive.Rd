@@ -27,5 +27,4 @@ a reactive table, or download the plots to save and use in manuscripts.
 squba_dive('path/to/results')
 }
 
-`Load data`
 }

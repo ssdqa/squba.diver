@@ -31,8 +31,8 @@ squba_dive <- function(squba_results_directory = '../dummy_rslts'){
   app_env <- new.env(parent = environment())
   app_dir <- system.file('app', package = 'squba.diver')
 
-  ##' `Load data`
-  app_env$squba_input <- squba.diver::format_squba_tbls()
+  ## Load data
+  app_env$squba_input <- format_squba_tbls()
 
   #### Check Registry ####
   app_env$squba_reg <- list(

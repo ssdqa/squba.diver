@@ -171,6 +171,16 @@ plt_engine_selector <- function(plt_rctv,
 
 
 
+#' Render & update notes table
+#'
+#' @param notes_rctval reactive tibble with notes information
+#' @param id the ID of the module for which notes are being taken
+#' @param mod_name the full name of the module
+#' @param other_inps any module-specific inputs that need to be documented
+#' @param input the server-level input
+#'
+#' @returns a reactive table with all notes information from the session
+#'
 render_update_notes <- function(notes_rctval,
                                 id,
                                 mod_name,
@@ -217,6 +227,13 @@ render_update_notes <- function(notes_rctval,
 }
 
 
+#' Plot downloader
+#'
+#' @param plt_obj a reactive list of all plots for the module + check
+#' @param id the ID of the module
+#'
+#' @returns a zip file will all plots displayed in the UI
+#'
 plot_downloader <- function(plt_obj,
                             id){
 
