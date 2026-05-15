@@ -12,12 +12,12 @@ navbarPage(
   title = 'SQUBA Visualizer',
   id = 'nav',
   theme = bslib::bs_theme(preset = 'lumen'),
-  
+
   #' `Apply Styling`
   tags$style(HTML(".navbar {background-color: #6eb4f5 !important;}
                    hr {border-top: 1px solid #000000;}
                    input[type='checkbox']:checked {background-color: #a60275 !important;}")),
-  
+
   #' `Home Page`
   tabPanel('Home',
            value = 1,
@@ -26,18 +26,19 @@ navbarPage(
              width = 12,
              align = 'center',
              uiOutput('homeui'),
-             box(title = 'Switch to Large N View',
-                 solidHeader = TRUE,
-                 background = 'blue',
-                 checkboxInput(inputId = 'largen',
-                               label = 'View Large N'))
+             shinydashboard::box(
+               title = 'Switch to Large N View',
+               solidHeader = TRUE,
+               background = 'blue',
+               checkboxInput(inputId = 'largen',
+                             label = 'View Large N'))
              )
            ),
-  
+
   #' `Start Menu`
     navbarMenu(title = 'Module Selection',
                menuName = 'navbar_ref'),
-  
+
   #' `Notes Tab`
   tabPanel('Notes',
            value = 99,
