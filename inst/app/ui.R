@@ -44,7 +44,7 @@ navbarPage(
            value = 99,
            id = 'notes',
            icon = icon('note-sticky'),
-           gt_output('notes_gt'),
+           gt::gt_output('notes_gt'),
            column(
              width = 12,
              downloadButton(outputId = 'notes_download',
