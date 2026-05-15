@@ -14,7 +14,7 @@ ca_server <- function(id, data, input, output) {
 
   #### Load check-specific data ####
   ca_dat <- reactive({
-    squba.diver::load_check_data(dat_list = data(),
+    load_check_data(dat_list = data(),
                                  input = input,
                                  type_input = 'ca_type')
   })
@@ -93,7 +93,7 @@ ca_server <- function(id, data, input, output) {
   #### Build plot 1 ####
   output$ca_plt1 <- renderUI({
 
-    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+    plt_engine_selector(plt_rctv = ca_graph(),
                                      n_plt = 1)
 
   })
@@ -101,7 +101,7 @@ ca_server <- function(id, data, input, output) {
   #### Build plot 2 ####
   output$ca_plt2 <- renderUI({
 
-    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+    plt_engine_selector(plt_rctv = ca_graph(),
                                      n_plt = 2)
 
   })
@@ -109,11 +109,11 @@ ca_server <- function(id, data, input, output) {
   #### Build plot 3 ####
   output$ca_plt3 <- renderUI({
 
-    squba.diver::plt_engine_selector(plt_rctv = ca_graph(),
+    plt_engine_selector(plt_rctv = ca_graph(),
                                      n_plt = 3)
 
   })
 
-  output$ca_dwnld <- squba.diver::plot_downloader(plt_obj = ca_graph,
+  output$ca_dwnld <- plot_downloader(plt_obj = ca_graph,
                                                   id = 'ca')
 }

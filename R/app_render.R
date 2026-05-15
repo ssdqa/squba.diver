@@ -30,7 +30,7 @@ squba_dive <- function(squba_results_directory = '../dummy_rslts'){
 
   local({
 
-    squba_input <- squba.diver::format_squba_tbls()
+    squba_input <- format_squba_tbls()
 
     #### Check Registry ####
     squba_reg <- list(

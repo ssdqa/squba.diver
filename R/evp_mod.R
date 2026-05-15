@@ -14,7 +14,7 @@ evp_server <- function(id, data, input, output) {
 
     #### Load check-specific data ####
     evp_dat <- reactive({
-      squba.diver::load_check_data(dat_list = data(),
+      load_check_data(dat_list = data(),
                                    input = input,
                                    type_input = 'evp_type')
     })
@@ -133,7 +133,7 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+      plt_engine_selector(plt_rctv = evp_graph(),
                                        n_plt = 1)
 
     })
@@ -148,7 +148,7 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+      plt_engine_selector(plt_rctv = evp_graph(),
                                        n_plt = 2)
 
     })
@@ -160,11 +160,11 @@ evp_server <- function(id, data, input, output) {
         req(input$evp_var_s)
       }
 
-      squba.diver::plt_engine_selector(plt_rctv = evp_graph(),
+      plt_engine_selector(plt_rctv = evp_graph(),
                                        n_plt = 3)
 
     })
 
-    output$evp_dwnld <- squba.diver::plot_downloader(plt_obj = evp_graph,
+    output$evp_dwnld <- plot_downloader(plt_obj = evp_graph,
                                                      id = 'evp')
 }

@@ -14,7 +14,7 @@ pf_server <- function(id, data, input, output) {
 
   #### Load check-specific data ####
   pf_dat <- reactive({
-    squba.diver::load_check_data(dat_list = data(),
+    load_check_data(dat_list = data(),
                                  input = input,
                                  type_input = 'pf_type')
   })
@@ -173,7 +173,7 @@ pf_server <- function(id, data, input, output) {
       req(input$pf_time)
     }
 
-    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+    plt_engine_selector(plt_rctv = pf_graph(),
                                      n_plt = 1)
 
   })
@@ -181,7 +181,7 @@ pf_server <- function(id, data, input, output) {
   #### Build plot 2 ####
   output$pf_plt2 <- renderUI({
 
-    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+    plt_engine_selector(plt_rctv = pf_graph(),
                                      n_plt = 2)
 
   })
@@ -189,11 +189,11 @@ pf_server <- function(id, data, input, output) {
   #### Build plot 3 ####
   output$pf_plt3 <- renderUI({
 
-    squba.diver::plt_engine_selector(plt_rctv = pf_graph(),
+    plt_engine_selector(plt_rctv = pf_graph(),
                                      n_plt = 3)
 
   })
 
-  output$pf_dwnld <- squba.diver::plot_downloader(plt_obj = pf_graph,
+  output$pf_dwnld <- plot_downloader(plt_obj = pf_graph,
                                                   id = 'pf')
 }
